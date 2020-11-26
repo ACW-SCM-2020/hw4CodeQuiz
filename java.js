@@ -6,13 +6,63 @@ var button2 = document.getElementById("answer2");
 var button3 = document.getElementById("answer3");
 var button4 = document.getElementById("answer4");
 
+
 var questionboxtext = document.querySelector(".questiontext");
 var questioncontainer = document.querySelector(".questioncontainer");
 
 
 
+var startingMinutes =  5;
+let time = startingMinutes * 60;
 
-console.log("linked");
+var countdownEl = document.getElementById('Timeleft');
+
+
+
+setInterval(updateTimeleft, 1000);
+
+
+function updateTimeleft() {
+    var minutes = Math.floor(time / 60);
+    var seconds = time % 60;
+
+    seconds = seconds < 5 ? "0" + seconds: seconds;
+    countdownEl.innerHTML = `${minutes}: ${seconds}`;
+    time--;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// function updateTimeleft() {
+//     var minutes = Math.floor(time / 60);
+//     var seconds = time % 60;
+
+//     time--;
+
+//     seconds = seconds < 5 ? "0" + seconds: seconds;
+//     countdownEl.innerHTML = `${minutes}: ${seconds}`;
+
+
+// }
+
+
+
+
+
+
+// for the last part where time has run out, and the user fails to win
+// var Timer = document.getElementById("TimeGone").setTimeout(function, 1000);
+
+
 // Update html elements with answers the user outputs
 
 // Make an array of objects where in each object has the question text, and the answer for any answer I want to put in the page.
