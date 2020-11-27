@@ -6,6 +6,7 @@ var button2 = document.getElementById("answer2");
 var button3 = document.getElementById("answer3");
 var button4 = document.getElementById("answer4");
 
+var answer_array = [button1,button2,button3,button4];
 
 var questionboxtext = document.querySelector(".questiontext");
 var questioncontainer = document.querySelector(".questioncontainer");
@@ -68,7 +69,7 @@ function updateTimeleft() {
 // Make an array of objects where in each object has the question text, and the answer for any answer I want to put in the page.
 // Setup dummy info don't make question content yet
 var i = 0;
-var questionarray = [
+var questionarray =  [
     {
         questiontext: "question1",
         choices: ["answer1", "answer2", "answer3", "answer4"],
@@ -100,6 +101,7 @@ var questionarray = [
 
 ]
 
+
 function generatequestion ()
 {
     questionboxtext.textContent = questionarray[i].questiontext;
@@ -107,28 +109,55 @@ function generatequestion ()
     button2.textContent = questionarray[i].choices[1];
     button3.textContent = questionarray[i].choices[2];
     button4.textContent = questionarray[i].choices[3];
+
 }
+
+
+
+
 
 generatequestion();
 
 
-var btnholder = document.querySelector(".buttonwrapper").addEventListener("click",myFunction);
-function myFunction () {
-    i++;
-    generatequestion();
-}
-
-
-// var btnholder = document.querySelector(".buttonwrapper").addEventListener("click","");
-// btnholder.on("click", "button", function(){
-//     i++;
-//     generatequestion();
-// })
+var btnholder = document.getElementById("buttonwrapper");
 
 
 
+var correct = questionarray[i].correct;
+btnholder.addEventListener('click', event => {
+    if (event.target.className == 'answer-btn') {
+        if (event.target.textContent === correct) {
+            console.log(correct)
+            i++;
+            questionarray[i+1].correct;
+            generatequestion();
+        }
+    }
+});
+
+
+    // function myFunction () {
+    //     i++;
+    //     generatequestion();
+    // }
 
 
 
 
-// Give elements CSS properties
+
+
+
+
+
+
+
+/* how to do event delegation on the four buttons
+
+var btnholder = document.getElementById("buttonwrapper");
+
+btnholder.addEventListener('click', event => {
+    if (event.target.className === 'answer-btn') {
+        console.log(event.target.innerHTML);
+    }
+});
+*/
