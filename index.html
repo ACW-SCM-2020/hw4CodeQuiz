@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 <body>
 
-    <div>
+    <div id = "myh2">
         <h2>Time Remaining:</h2>
-        <p id = "Timeleft">STARTING NOW</p>
+        <p id = "Timeleft">5:00</p>
     </div>
 
     <div class = "questioncontainer">
@@ -27,6 +28,20 @@
     </div>
 
 
+
+
+
+
+    <h2>High Scores</h2>
+
+    <div class = "table-fluid" id = "scoreboard">
+        <th>Initials</th>
+        <div id = "intialid"></div>
+        <th>Score</th>
+        <div id = "scoreid"></div>
+    </div>
+
+    <button id = "startbutton2">Start</button>
 
     <script src="java.js"></script>
 </body>

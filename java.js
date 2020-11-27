@@ -6,7 +6,6 @@ var button2 = document.getElementById("answer2");
 var button3 = document.getElementById("answer3");
 var button4 = document.getElementById("answer4");
 
-var answer_array = [button1,button2,button3,button4];
 
 var questionboxtext = document.querySelector(".questiontext");
 var questioncontainer = document.querySelector(".questioncontainer");
@@ -19,19 +18,43 @@ let time = startingMinutes * 60;
 var countdownEl = document.getElementById('Timeleft');
 
 
+function gameover () {
+    document.querySelector('.questioncontainer').style.display = "none";
+    document.getElementById("myh2").style.display = "none";
+    startbutt.style.display = "block";
+}
+
 
 setInterval(updateTimeleft, 1000);
 
+function displaymyTime() {
+        var minutes = Math.floor(time / 60);
+        var seconds = time % 60;
+    
+        seconds = seconds < 10 ? "0" + seconds: seconds;
+        countdownEl.innerHTML = `${minutes}: ${seconds}`;
+     }
+    
 
 function updateTimeleft() {
-    var minutes = Math.floor(time / 60);
-    var seconds = time % 60;
-
-    seconds = seconds < 5 ? "0" + seconds: seconds;
-    countdownEl.innerHTML = `${minutes}: ${seconds}`;
     time--;
-}
+    if (time <= 0) {
+        gameover();
+    }
+    displaymyTime();
+    // var minutes = Math.floor(time / 60);
+    // var seconds = time % 60;
 
+    // seconds = seconds < 10 ? "0" + seconds: seconds;
+    // countdownEl.innerHTML = `${minutes}: ${seconds}`;
+}
+// funtion displayTime () {
+// //     var minutes = Math.floor(time / 60);
+// //     var seconds = time % 60;
+
+// //     seconds = seconds < 10 ? "0" + seconds: seconds;
+// //     countdownEl.innerHTML = `${minutes}: ${seconds}`;
+//  }
 
 
 
@@ -109,14 +132,40 @@ function generatequestion ()
     button2.textContent = questionarray[i].choices[1];
     button3.textContent = questionarray[i].choices[2];
     button4.textContent = questionarray[i].choices[3];
+    correct = questionarray[i].correct;
 
 }
 
 
 
 
+var startbutt = document.getElementById("startbutton2");
 
-generatequestion();
+
+
+// var initialid = document.getElementById("initialid");
+// var scoreid = document.getElementById("scoreid");
+
+// initialid.append("")
+// scoreid.append("")
+
+document.querySelector('.questioncontainer').style.display = "none";
+document.getElementById('myh2').style.display = "none";
+
+startbutt.addEventListener('click',event => {
+    document.querySelector('.questioncontainer').style.display = "";
+    startbutt.style.display = "none";
+    document.getElementById('myh2').style.display = "";
+    time = startingMinutes * 60;
+    displaymyTime();
+    i = 0;
+    generatequestion();
+})
+
+
+
+
+
 
 
 var btnholder = document.getElementById("buttonwrapper");
@@ -124,14 +173,24 @@ var btnholder = document.getElementById("buttonwrapper");
 
 
 var correct = questionarray[i].correct;
+
+
+
 btnholder.addEventListener('click', event => {
     if (event.target.className == 'answer-btn') {
         if (event.target.textContent === correct) {
             console.log(correct)
             i++;
-            questionarray[i+1].correct;
+            if (i >= questionarray.length ) {
+                alert("You are finsihed!");
+                gameover();
+            } else { 
             generatequestion();
+            
+
+            }
         }
+
     }
 });
 
