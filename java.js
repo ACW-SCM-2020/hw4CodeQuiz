@@ -43,14 +43,14 @@ function gameover () {
 
 
     // for loop for setting initials to be pushed to DOM and appending LI (I DO NOT BELIEVE MY LINE 46-52 WORKS)
-    localStorage.setItem("Timeleft", time);
-    for (var score = 0; i < score.length; score++) {
-        var scorelistItem = document.createElement("li");
+    //localStorage.setItem("Timeleft", time);
+    // for (var score = 0; i < score.length; score++) {
+    //     var scorelistItem = document.createElement("li");
 
-        scorelistItem.textContent = score[i];
+    //     scorelistItem.textContent = score[i];
 
-        countdownEl.appendChild(scorelistItem);
-    }
+    //     countdownEl.appendChild(scorelistItem);
+    // }
 
 
     document.querySelector('.questioncontainer').style.display = "none";
@@ -78,7 +78,7 @@ function updateTimeleft() {
     if (time <= 0) {
         gameover();
     }
-    displaymyTime();
+    displaymyTime();}
 
 var i = 0;
 var questionarray =  [
@@ -111,7 +111,7 @@ var questionarray =  [
 
     }
 
-]
+];
 
 
 function generatequestion ()
@@ -135,14 +135,14 @@ document.getElementById('myh2').style.display = "none";
 startbutt.addEventListener('click',event => {
 
     // for loop for setting initials to be pushed to DOM and appending LI ((I DO NOT BELIEVE MY LINEs 138-145 WORKS))
-    localStorage.setItem("initials", initials);
-    for (var initials = 0; i < initials.length; initials++) {
-        var initialslistItem = document.createElement("li");
+   // localStorage.setItem("initials", initials);
+    // for (var initials = 0; i < initials.length; initials++) {
+    //     var initialslistItem = document.createElement("li");
 
-        initialslistItem.textContent = intials[i];
+    //     initialslistItem.textContent = intials[i];
 
-        playerinput.appendChild(initialslistItem);
-    }
+    //     playerinput.appendChild(initialslistItem);
+ // }
 
     document.querySelector('.questioncontainer').style.display = "";
     startbutt.style.display = "none";
@@ -151,7 +151,7 @@ startbutt.addEventListener('click',event => {
     displaymyTime();
     i = 0;
     generatequestion();
-})
+});
 
 
 
@@ -189,25 +189,4 @@ btnholder.addEventListener('click', event => {
     // function myFunction () {
     //     i++;
     //     generatequestion();
-    // }
-
-
-
-
-
-
-
-
-
-
-
-/* how to do event delegation on the four buttons
-
-var btnholder = document.getElementById("buttonwrapper");
-
-btnholder.addEventListener('click', event => {
-    if (event.target.className === 'answer-btn') {
-        console.log(event.target.innerHTML);
-    }
-});
-*/
+    // 
